@@ -1,0 +1,20 @@
+.orderNotes {
+    font-size: 1rem;
+    padding: 1em 0;
+}
+
+.orderNotes label {
+    color: var(--cDarkGray);
+    font-size: 1.5em;
+    margin: 1em 0;
+}
+
+.orderNotes input {
+
+    color: var(--cGray);
+    width: calc(100% - 2em - 2px);
+    padding: 1em 1em;
+    font-size: 1.2em;
+    border-radius: 3px;
+    border: 1px solid var(--cGray);
+}

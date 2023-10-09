@@ -1,0 +1,30 @@
+.pageMain {
+    height: 100vh;
+    background-image: url(" ../../Assets/mvp-banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1rem;
+    
+}
+
+.pageMain > img {
+    padding: 4em 0 2em 0;
+    width: 40em;
+}
+
+.pageMain > p {
+    font-size: 6em;
+    margin-bottom: 1em;
+    font-family: 'Barlow', sans-serif;
+}
+
+.pageMain > .link {
+    font-size: 2em;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    padding: 0.5em 2em;
+    background-color: var(--cYellow);
+    color: var(--cDarkGray);
+    border-radius: 3em;
+}

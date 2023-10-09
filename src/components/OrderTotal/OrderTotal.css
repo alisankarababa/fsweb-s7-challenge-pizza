@@ -1,0 +1,29 @@
+.orderTotal {
+    border: 1px solid var(--cGray);
+    padding: 2em;
+    border-radius: 5px;
+}
+
+.orderTotal h2 {
+    font-size: 1.5em;
+    color: var(--cDarkGray);
+}
+
+.orderTotal div {
+    margin: 1em 0;
+    font-size: 1.2em;
+}
+
+.orderButton {
+    color: var(--cDarkGray);
+    background-color: var(--cYellow);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1em 0;
+    border-radius: 5px;
+}
+
+.orderButton:disabled {
+    opacity: 0.5;
+    cursor: default;
+}

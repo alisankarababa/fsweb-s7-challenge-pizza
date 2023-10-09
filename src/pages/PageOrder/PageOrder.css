@@ -1,0 +1,25 @@
+.page-order {
+    font-family: 'Barlow', sans-serif;
+}
+
+
+
+#header-logo {
+    margin-bottom: 1em;
+}
+
+#header-logo > img {
+    max-width: 35em;
+}
+
+.pageOrder-product {
+    margin: 1.5em 0 1em 0;
+}
+
+.pageOrder-form {
+    margin: 1em 0 1.5em 0;
+}
+
+.page-path {
+    font-size: 1.5em;
+}

@@ -1,0 +1,16 @@
+.page-success {
+    height: 100vh;
+    background-color: var(--cRed);
+    color: var(--cBeige);
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.page-success  img {
+    width: 25%;
+    margin: 8em 0 25em 0;
+}
+
+.page-success  p {
+    font-size: 6em;
+}

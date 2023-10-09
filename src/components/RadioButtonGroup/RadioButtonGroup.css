@@ -1,0 +1,17 @@
+.radioButtonGroup {
+    padding: 1em 0;
+}
+
+.radioButtonGroup h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.radioButtonGroup .radioButton {
+
+    margin: .5em;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    column-gap: 0.5em;
+}

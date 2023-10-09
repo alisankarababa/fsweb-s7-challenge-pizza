@@ -28,6 +28,139 @@
   color: #61dafb;
 }
 
+* {
+    --cRed: #CE2829;
+    --cBeige: #FAF7F2;
+    --cDarkGray: #292929;
+    --cGray: #5F5F5F;
+    --cYellow: #FDC913;
+}
+
+h1, h2, h3, h4, h5, h6, p, input, label, li, a, option, select,button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.text-beige {
+    color: var(--cBeige)
+}
+
+.text-red {
+    color: var(--cRed)
+}
+
+.text-darkgray {
+    color:  var(--cDarkGray)
+}
+
+.text-gray {
+    color: var(--cGray)
+}
+
+.text-yellow {
+    color: var(--cYellow)
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.background-red {
+    background-color: var(--cRed);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-direction-col {
+    flex-direction: column;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.grow-3 {
+    flex-grow: 3;
+}
+
+.grow-1 {
+    flex-grow: 1;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+
+.container {
+    font-size: 1rem;
+    max-width: 103ch;
+    margin: 0 auto;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.headerish {
+    background-color: var(--cRed);
+    padding: 2em 0;
+}
+
+.block {
+    display: block;
+}
+
+.m-auto {
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.error-message {
+    color: var(--cRed);
+    font-size: 2em;
+    word-wrap: break-word;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +169,10 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 767px) {
+    .container {
+        font-size: 0.8rem;
+    }
+}
+
