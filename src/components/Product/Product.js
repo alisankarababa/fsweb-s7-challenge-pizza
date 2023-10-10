@@ -8,14 +8,14 @@ function Product(props) {
     return (
         <div className="product text-darkgray">
             <h1>{name}</h1>
-            <div className="">
+            <div className="product-details">
                 <p className="product-price grow-3"><span className="bold">{price}₺</span></p>
                 <div className="flex justify-content-between text-gray grow-1">
                     <p className="product-points">{points}</p>
                     <p className="product-number">({number})</p>
                 </div>
             </div>
-            <p className="text-gray product-explanation">{explanation}</p>
+            {explanation} && <p className="text-gray product-explanation">{explanation}</p>
         </div>
 
 
