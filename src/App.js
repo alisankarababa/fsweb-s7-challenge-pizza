@@ -1,14 +1,12 @@
 import "./App.css"
 
 import React from "react";
-import { useState} from "react";
 import axios from "axios";
 import { Switch, Route, useHistory} from "react-router-dom";
 
 import PageMain from "./pages/PageMain/PageMain";
 import PageOrder from "./pages/PageOrder/PageOrder";
 import PageSuccess from "./pages/PageSuccess/PageSuccess";
-import { useEffect } from "react";
 
 const urlPageMain = "/";
 const urlPageSuccess = "/success";
@@ -31,30 +29,26 @@ const pizzas = [
 ]
 
 const App = () => {
-    const [order, setOrder] = useState(null);
     const history = useHistory();
     
     function hSubmit(formEntries) {
         console.log(formEntries);
-        axios.post("https://reqres.in/api/users", formEntries)
+        axios.post("https://reqres.in/api/user", formEntries)
         .then(function (response) {
             
-            setOrder(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
-    
-    useEffect(()=> {
-        if(order) {
+            const order = response.data;
+            console.log(order);
+
             const orderJSON = JSON.stringify(order);
             const encodedOrder = encodeURIComponent(orderJSON);
 
             history.push(`${urlPageSuccess}/${encodedOrder}`)
-        }
-    }, [order])
-
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+    }
+    
     return (
         <Switch>
             <Route exact path={urlPageMain}>
@@ -66,7 +60,6 @@ const App = () => {
                     hSubmit={hSubmit}
                 />
             </Route>
-            {/* /:extraIngredients/:costExtra/:costTotal */}
             <Route path={`${urlPageSuccess}/:order`}>
                 <PageSuccess/>
             </Route>

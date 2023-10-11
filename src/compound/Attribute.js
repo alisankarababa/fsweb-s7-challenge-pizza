@@ -13,7 +13,6 @@ export default function Attribute(props) {
     if(1 === itemList.length)
         seperator = "";
 
-    console.log(seperator, typeof seperator);
     const strItemList = itemList.join(seperator);
     return (
         <div className={className ? `attribute ${className}` : "attribute"}>

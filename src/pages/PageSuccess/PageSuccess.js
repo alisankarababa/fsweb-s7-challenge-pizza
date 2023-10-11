@@ -14,9 +14,7 @@ const dataPageSuccess = {
 }
 
 function PageSuccess(props) {
-    console.log(useParams());
-    const { order: orderEncoded } = useParams();
-    const orderJSON = decodeURIComponent(orderEncoded);
+    const orderJSON = decodeURIComponent(useParams().order);
 
     const order = JSON.parse(orderJSON);
 
