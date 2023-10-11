@@ -52,12 +52,15 @@ function ProductOrderForm(props) {
                     hChange={hChange}
                 />
             </div>
+            {formErrors.extraIngredients && <p data-cy="error" className="error-message">{formErrors.extraIngredients}</p>}
+
             
             <OrderNotes
                 className="form-orderNotes"
                 id={"name-input"}
                 inputName={"customerName"}
                 labelText="Müşteri Adı"
+                placeholder="İsminiz..."
                 value={formEntries.customerName}
                 datacy={testAttributes.inputCustomerName}
                 hChange = {hChange}
@@ -69,6 +72,7 @@ function ProductOrderForm(props) {
                 id={"note-input"}
                 inputName="orderNotes"
                 labelText="Sipariş Notu"
+                placeholder="Sipariş notunuz..."
                 value={formEntries.notes}
                 datacy={testAttributes.inputNotes}
                 hChange = {hChange}
