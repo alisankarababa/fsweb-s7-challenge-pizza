@@ -19,15 +19,6 @@ function PageSuccess(props) {
     const orderJSON = decodeURIComponent(orderEncoded);
 
     const order = JSON.parse(orderJSON);
-    console.log(order);
-    console.log(order.name);
-    const extraIngredients = [];
-
-    for (const key in order.extraIngredients) {
-
-            if( order.extraIngredients[key] )
-                extraIngredients.push(key);
-    }
 
     return (
         <div className="page-success">
@@ -44,7 +35,7 @@ function PageSuccess(props) {
                     <Card className="order-details">
                         <Attribute label="Boyut: " itemList={Array(1).fill(order.size)}/>
                         <Attribute label="Hamur: " itemList={Array(1).fill(order.doughThickness)}/>
-                        <Attribute label="Ek Malzemeler: " seperator="," itemList={extraIngredients}/>
+                        <Attribute label="Ek Malzemeler: " seperator="," itemList={order.extraIngredients}/>
                     </Card>
                 </Card>
                 <Card className="cost-card">
