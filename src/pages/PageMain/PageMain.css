@@ -1,30 +1,84 @@
-.pageMain {
-    height: 100vh;
+.page-main {
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+}
+
+.banner-main {
+    max-height: 100vh;
+    max-width: 1920px;
     background-image: url(" ../../Assets/mvp-banner.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-size: 1rem;
-    
 }
 
-.pageMain > img {
+.banner-main > img {
     padding: 4em 0 2em 0;
     width: 40em;
 }
 
-.pageMain > p {
+.banner-main > h1 {
     font-size: 6em;
-    margin-bottom: 1em;
+    margin: 1em;
     font-family: 'Barlow', sans-serif;
 }
 
-.pageMain > .link {
+.banner-main > .link {
+    display: inline-block;
     font-size: 2em;
-    font-family: 'Barlow', sans-serif;
     font-weight: 700;
+    margin: 1em;
     padding: 0.5em 2em;
     background-color: var(--cYellow);
     color: var(--cDarkGray);
     border-radius: 3em;
 }
+
+.page-main > nav {
+    padding: 3em;
+}
+
+.page-main ul {
+    max-width: 67.5%;
+    font-size: 1.8em;
+    margin: auto;
+}
+
+
+.sec-area1 {
+    display: flex;
+    margin: auto;
+    max-width: 66%;
+}
+
+.sec-area1 > div:nth-child(2) {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.page-main .bg-pizza {
+    background-image: url("../../Assets/adv-aseets/kart-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.page-main .bg-fastfood {
+    background-image: url("../../Assets/adv-aseets/kart-2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+}
+
+.page-main .bg-delivery {
+    background-image: url("../../Assets/adv-aseets/kart-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+}
+
+

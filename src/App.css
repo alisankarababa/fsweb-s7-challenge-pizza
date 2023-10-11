@@ -40,7 +40,6 @@ h1, h2, h3, h4, h5, h6, p, input, label, li, a, option, select,button {
     margin: 0;
     padding: 0;
     border: 0;
-    font-weight: inherit;
 }
 
 a {
@@ -80,6 +79,10 @@ a {
     background-color: var(--cRed);
 }
 
+.d-inline {
+    display: inline;
+}
+
 .flex {
     display: flex;
 }
@@ -89,7 +92,7 @@ a {
 }
 
 .align-items-center {
-    align-items: flex-start
+    align-items: center;
 }
 
 .flex-wrap {
@@ -177,6 +180,20 @@ a {
     font-size: 2em;
     word-wrap: break-word;
 }
+
+.bg-beige {
+    background-color: var(--cBeige);
+}
+
+
+
+/* .btn {
+
+}
+
+.btn-pill {
+    padding: ;
+} */
 
 @keyframes App-logo-spin {
   from {
