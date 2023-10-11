@@ -18,7 +18,7 @@ function CheckBoxGroup(props) {
                                 type="checkbox"
                                 name={element}
                                 id={element}
-                                checked={checkList[element]}
+                                checked={checkList.includes(element)}
                                 onChange={hChange}/>
                             <label htmlFor={element}>{element}</label>
                         </div>

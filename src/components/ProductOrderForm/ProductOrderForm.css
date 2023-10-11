@@ -10,7 +10,13 @@
     padding: 1em 0;
 }
 
+.form-orderNotes label {
+    font-weight: 600;
+}
+
 #pizza-form > hr{
     margin: 3em 0;
 }
+
+
 

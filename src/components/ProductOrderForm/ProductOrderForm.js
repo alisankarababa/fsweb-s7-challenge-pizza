@@ -9,20 +9,127 @@ import OrderTotal from "../OrderTotal/OrderTotal";
 
 
 import { testAttributes } from "../../data/PageOrderData"
+import { errorMessages } from "../../data/PageOrderData";
 
-
+import { useState, useEffect } from "react";
+import * as yup from "yup";
 
 function ProductOrderForm(props) {
-    const {product, formEntries, formErrors} = props;
-    const {hChange} = props;
+
+    const {hSubmit} = props;
+    const {product} = props;
     const {className} = props;
-    const {onSubmit} = props;
-    const {hIncrementOrderCount, hDecrementOrderCount} = props;
-    const {disabled} = props;
+
+    const initialFormEntries = {
+        orderCount: 1,
+        productName: product.name,
+        productPrice: product.price,
+        customerName: "",
+        orderNotes: "",
+        costTotal: 0,
+        costExtra: 0,
+        size: product.availableSizes[0],
+        doughThickness: product.availableDoughThicknesses[0],
+        extraIngredients: []
+    }
+
+    const [formEntries, setFormEntries] = useState(initialFormEntries);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [formErrors, setFormErrors] = useState({customerName: "", doughThickness: "", extraIngredients: ""});
+    const [costExtra, setCostExtra] = useState(0);
+    
+    const formSchema = yup.object().shape({
+        customerName: yup
+        .string()
+        .required(errorMessages.errorNameInputEmpty)
+        .min(2, errorMessages.errorNameInputMin),
+        doughThickness: yup
+        .string()
+        .notOneOf([product.availableDoughThicknesses[0]], errorMessages.errorDoughThickness),
+        extraIngredients: yup
+        .array()
+        .max(10, "En fazla 10 ekstra malzeme seçebilirsiniz")
+    });
+    
+
+    useEffect(() => {
+        formSchema
+        .isValid(formEntries)
+        .then(valid => setIsFormValid(valid));
+    }, [formEntries]);
+
+    useEffect(() => {
+        const newFormEntries = {...formEntries};
+        newFormEntries.costExtra = newFormEntries.orderCount * costExtra;
+        newFormEntries.costTotal = newFormEntries.orderCount * product.price + newFormEntries.costExtra;
+        setFormEntries(newFormEntries);
+    }, [costExtra, formEntries.orderCount])
+
+    function hIncrementOrderCount(event) {
+        event.preventDefault();
+
+        const newFormEntries = {...formEntries};
+        newFormEntries.orderCount += 1;
+        setFormEntries(newFormEntries);
+    }
+
+    function hDecrementOrderCount(event) {
+        event.preventDefault();
+
+        if( 1 === formEntries.orderCount )
+            return;
+
+        const newFormEntries = {...formEntries};
+        newFormEntries.orderCount -= 1;
+        setFormEntries(newFormEntries);
+    }
+    
+    function hChange(event) {
+        const key = event.target.name;
+        const value = ("checkbox" === event.target.type ? event.target.checked : event.target.value);
+        
+        const newFormEntries = {...formEntries};
+
+        if("checkbox" === event.target.type) {
+            if(value) {
+                newFormEntries.extraIngredients.push(key);
+                setCostExtra((e) => e + product.priceExtraIngredient);
+            } else {
+                const idx = newFormEntries.extraIngredients.indexOf(key);
+                newFormEntries.extraIngredients.splice(idx, 1);
+                setCostExtra((e) => e - product.priceExtraIngredient);
+            }
+
+            yup.reach(formSchema, "extraIngredients")
+            .validate(newFormEntries.extraIngredients)
+            .then(valid => { setFormErrors({ ...formErrors, "extraIngredients": "" }); })
+            .catch(err => { setFormErrors({ ...formErrors, "extraIngredients":  err.errors[0] }); });
+        }
+        else {
+            newFormEntries[key] = value;
+            if( "customerName" === key || "doughThickness" === key ) {
+                yup.reach(formSchema, key)
+                .validate(value)
+                .then(valid => { setFormErrors({ ...formErrors, [key]: "" }); })
+                .catch(err => { setFormErrors({ ...formErrors, [key]: err.errors[0] }); });
+            }
+        }
+
+        setFormEntries(newFormEntries);
+    }
+
+    function hControlledSubmit(event) {
+        event.preventDefault();
+
+        if(!isFormValid)
+            return;
+        
+        hSubmit(formEntries);
+    }
     
     return (
 
-        <form onSubmit={onSubmit} id="pizza-form">
+        <form onSubmit={hControlledSubmit} id="pizza-form">
             <div className={`form-radio-dropdown flex justify-content-between ${className}`}>
                 <RadioButtonGroup
                     title={"Boyut Seç"}
@@ -52,12 +159,15 @@ function ProductOrderForm(props) {
                     hChange={hChange}
                 />
             </div>
+            {formErrors.extraIngredients && <p data-cy="error" className="error-message">{formErrors.extraIngredients}</p>}
+
             
             <OrderNotes
                 className="form-orderNotes"
                 id={"name-input"}
                 inputName={"customerName"}
                 labelText="Müşteri Adı"
+                placeholder="İsminiz..."
                 value={formEntries.customerName}
                 datacy={testAttributes.inputCustomerName}
                 hChange = {hChange}
@@ -69,6 +179,7 @@ function ProductOrderForm(props) {
                 id={"note-input"}
                 inputName="orderNotes"
                 labelText="Sipariş Notu"
+                placeholder="Sipariş notunuz..."
                 value={formEntries.notes}
                 datacy={testAttributes.inputNotes}
                 hChange = {hChange}
@@ -90,7 +201,7 @@ function ProductOrderForm(props) {
                         costTotal={formEntries.costTotal}
                         orderCount={formEntries.orderCount}
                     />
-                    <input data-cy="submit" disabled={disabled} className="orderButton w-100" type="submit" value="SİPARİŞ VER"/>
+                    <input data-cy="submit" disabled={!isFormValid} className="orderButton w-100" type="submit" value="SİPARİŞ VER"/>
                 </div>
             </div>
         </form>
