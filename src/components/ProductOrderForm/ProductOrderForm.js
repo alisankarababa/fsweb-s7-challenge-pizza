@@ -30,12 +30,12 @@ function ProductOrderForm(props) {
         costExtra: 0,
         size: product.availableSizes[0],
         doughThickness: product.availableDoughThicknesses[0],
-        extraIngredients: {}
+        extraIngredients: []
     }
 
     const [formEntries, setFormEntries] = useState(initialFormEntries);
     const [isFormValid, setIsFormValid] = useState(false);
-    const [formErrors, setFormErrors] = useState({customerName: "", doughThickness: ""});
+    const [formErrors, setFormErrors] = useState({customerName: "", doughThickness: "", extraIngredients: ""});
     const [costExtra, setCostExtra] = useState(0);
     
     const formSchema = yup.object().shape({
@@ -45,12 +45,12 @@ function ProductOrderForm(props) {
         .min(2, errorMessages.errorNameInputMin),
         doughThickness: yup
         .string()
-        .notOneOf([product.availableDoughThicknesses[0]], errorMessages.errorDoughThickness)
+        .notOneOf([product.availableDoughThicknesses[0]], errorMessages.errorDoughThickness),
+        extraIngredients: yup
+        .array()
+        .max(10, "En fazla 10 ekstra malzeme seçebilirsiniz")
     });
     
-    for ( const item of product.availableExtraIngredients ) {
-        initialFormEntries.extraIngredients[item] = false;
-    }
 
     useEffect(() => {
         formSchema
@@ -87,27 +87,35 @@ function ProductOrderForm(props) {
     function hChange(event) {
         const key = event.target.name;
         const value = ("checkbox" === event.target.type ? event.target.checked : event.target.value);
+        
+        const newFormEntries = {...formEntries};
 
-        if([key] in formEntries.extraIngredients) {
-            const newFormEntries = {...formEntries};
-            newFormEntries.extraIngredients[key] = value;
-            
-            if(true === value)
+        if("checkbox" === event.target.type) {
+            if(value) {
+                newFormEntries.extraIngredients.push(key);
                 setCostExtra((e) => e + product.priceExtraIngredient);
-            else
+            } else {
+                const idx = newFormEntries.extraIngredients.indexOf(key);
+                newFormEntries.extraIngredients.splice(idx, 1);
                 setCostExtra((e) => e - product.priceExtraIngredient);
+            }
 
-            setFormEntries(newFormEntries);
+            yup.reach(formSchema, "extraIngredients")
+            .validate(newFormEntries.extraIngredients)
+            .then(valid => { setFormErrors({ ...formErrors, "extraIngredients": "" }); })
+            .catch(err => { setFormErrors({ ...formErrors, "extraIngredients":  err.errors[0] }); });
         }
         else {
-            setFormEntries({...formEntries, [key]: value});
+            newFormEntries[key] = value;
+            if( "customerName" === key || "doughThickness" === key ) {
+                yup.reach(formSchema, key)
+                .validate(value)
+                .then(valid => { setFormErrors({ ...formErrors, [key]: "" }); })
+                .catch(err => { setFormErrors({ ...formErrors, [key]: err.errors[0] }); });
+            }
         }
 
-        if("customerName" === key || "doughThickness" === key)
-        yup.reach(formSchema, key)
-            .validate(value)
-            .then(valid => { setFormErrors({ ...formErrors, [key]: "" }); })
-            .catch(err => { setFormErrors({ ...formErrors, [key]: err.errors[0] }); });
+        setFormEntries(newFormEntries);
     }
 
     function hControlledSubmit(event) {
