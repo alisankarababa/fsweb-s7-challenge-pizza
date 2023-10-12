@@ -58,7 +58,7 @@ export default function Footer(props) {
         <footer className={`${className} bg-darkgray text-beige`}>
             {
                 <div className="footerContent">
-                    <div>
+                    <div className="contact">
                         <img src={logo} alt="logo"/>
                         <IconWithTextGroup className="footer-icontexts" dataList={contact}/>
                     </div>
@@ -67,7 +67,7 @@ export default function Footer(props) {
 
                     <div className="footer-third">
                         <h3>{instagramHeading}</h3>
-                        <div>
+                        <div >
                             {
                                 insta.map((item) => (
                                     <img className="img-insta" src={item.src} alt="img"/>
