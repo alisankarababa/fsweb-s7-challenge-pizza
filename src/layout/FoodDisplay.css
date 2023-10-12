@@ -1,0 +1,17 @@
+.food-display--item {
+    width: 30%;
+}
+
+@media (max-width: 991px) {
+
+    .food-display--item {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    
+    .food-display--item {
+        width: 45%;
+    }
+}

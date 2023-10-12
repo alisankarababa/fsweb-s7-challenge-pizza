@@ -1,0 +1,10 @@
+.icon-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1em;
+}
+
+.icon-text span {
+    font-size: 1.8em;
+}

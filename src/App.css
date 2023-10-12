@@ -91,6 +91,10 @@ a {
     flex-direction: column;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .align-items-center {
     align-items: center;
 }
@@ -185,12 +189,31 @@ a {
     background-color: var(--cBeige);
 }
 
-
-
-/* .btn {
-
+.bg-white {
+    background-color: white;
 }
 
+.bg-darkgray {
+    background-color: var(--cDarkGray);
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.btn {
+    padding: 1em 2em;
+}
+
+.btn-pill {
+    border-radius: 10em;
+}
+
+/*
 .btn-pill {
     padding: ;
 } */
@@ -204,9 +227,9 @@ a {
   }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .container {
         font-size: 0.8rem;
     }
-}
+} */
 

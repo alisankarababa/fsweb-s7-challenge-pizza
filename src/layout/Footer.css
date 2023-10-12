@@ -1,0 +1,47 @@
+footer {
+    padding: 5em 0;
+}
+
+.footerContent {
+    max-width: 66%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-third{
+    margin-left: 10%;
+    width: 30%;
+}
+
+.footer-third > div {
+    margin-top: 4em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.img-insta {
+    width: 25%;
+}
+
+
+.footer-third h3 {
+    font-size: 2.4em;
+    font-weight: 500;
+}
+
+
+@media (max-width: 991px) {
+
+    .food-display--item {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    
+    .food-display--item {
+        width: 45%;
+    }
+}
