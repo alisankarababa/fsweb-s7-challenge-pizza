@@ -1,0 +1,49 @@
+
+.compound-component-food {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compound-component-food > div {
+    width: 90%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.compound-component-food > div > img{
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: auto;
+}
+
+.compound-component-food > div > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.compound-component-food h5 {
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.compound-component-food span {
+    font-size: 1.6em;
+}
+
+.compound-component-food span:last-child {
+    font-size: 2.2em;
+}
+
+@media (max-width: 1199px) {
+    .compound-component-food {
+        font-size: 0.8em;
+    }
+
+
+
+}

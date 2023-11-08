@@ -1,30 +1,248 @@
-.pageMain {
+.page-main {
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+    color: var(--cDarkGray);
+}
+
+/* banner header */
+
+.banner-main {
     height: 100vh;
+    max-width: 1920px;
     background-image: url(" ../../Assets/mvp-banner.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-size: 1rem;
-    
 }
 
-.pageMain > img {
+.banner-main > img {
     padding: 4em 0 2em 0;
     width: 40em;
 }
 
-.pageMain > p {
+.banner-main > h1 {
     font-size: 6em;
-    margin-bottom: 1em;
-    font-family: 'Barlow', sans-serif;
+    margin: 1em;
 }
 
-.pageMain > .link {
+.banner-main > .link {
+    display: inline-block;
     font-size: 2em;
-    font-family: 'Barlow', sans-serif;
     font-weight: 700;
+    margin: 1em;
     padding: 0.5em 2em;
     background-color: var(--cYellow);
-    color: var(--cDarkGray);
     border-radius: 3em;
+}
+
+.mid-area {
+    padding-top: 12em;
+}
+
+/* sec area 1 */
+
+.sec-area1 {
+    
+    display: flex;
+    margin: auto;
+    max-width: 66%;
+    color: var(--cBeige);
+}
+
+.sec-area1 > div:nth-child(2) {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.page-main .bg-pizza {
+    background-image: url("../../Assets/adv-aseets/kart-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 48%;
+    margin: 1%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1em;
+    display: flex;
+}
+
+.page-main .bg-pizza > div {
+    width: 92%;
+    aspect-ratio: 1 / 1;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    row-gap: 3em;
+}
+
+.page-main .bg-pizza > div > h5 {
+    width: 10ch;
+    word-wrap: break-word;
+    font-size: 6.8em
+}
+
+.page-main .bg-pizza > div > p {
+    font-size: 2em;
+}
+
+.page-main .bg-pizza > div > button {
+    font-size: 1.4em;
+}
+
+.page-main .bg-fastfood {
+    background-image: url("../../Assets/adv-aseets/kart-2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 96%;
+    margin: 2%;
+    aspect-ratio: 2 / 1;
+    border-radius: 1em;
+}
+
+.page-main .bg-fastfood > div {
+    width: 92%;
+    aspect-ratio: 2 / 1;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    row-gap: 3em;
+}
+
+.page-main .bg-fastfood > div > h5
+{
+    width: 11ch;
+    font-size: 3.2em;
+}
+
+.page-main .bg-fastfood > div > button {
+    font-size: 1.4em;
+}
+
+.page-main .bg-delivery {
+    background-image: url("../../Assets/adv-aseets/kart-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 96%;
+    margin: 2%;
+    aspect-ratio: 2 / 1;
+    border-radius: 1em;
+}
+
+.page-main .bg-delivery > div {
+    width: 92%;
+    aspect-ratio: 2 / 1;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    row-gap: 3em;
+}
+
+.page-main .bg-delivery > div > h5
+{
+    width: 12ch;
+    font-size: 3.2em;
+}
+
+/* main nav */
+.nav-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 67.5%;
+    row-gap: 2em;
+    column-gap: 1em;
+    margin: 3em auto;
+}
+
+
+/* sec mostreq */
+
+.sec-mostrequested {
+    margin: 2em auto;
+    margin-top: 10em;
+    max-width: 66%;
+    row-gap: 5em;
+}
+
+.sec-mostrequested p:first-child {
+    font-size: 3.2em;
+}
+
+.sec-mostrequested p:nth-child(2) {
+    font-size: 4.2em;
+}
+
+.nav-mostreq {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1em;
+
+
+}
+
+.food-display {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 2em;
+}
+
+@media (max-width:991px) {
+    
+    .food-display {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2em;
+    }
+}
+
+
+@media (min-width:992px) and (max-width: 1199px) {
+
+    /*main-nav*/
+    .page-main > nav{
+        max-width: 80%;
+        padding: 1em;
+    }
+    
+    /* .sec-area1 */
+
+    .sec-area1 {
+        max-width: 80%;
+    }
+    
+    .page-main .bg-pizza > div > h5 {
+        font-size: 4em
+    }
+    
+    .page-main .bg-pizza > div > button {
+        font-size: 2em;
+    }
+    
+    .page-main .bg-fastfood > div > button {
+        font-size: 1.4em;
+    }
+    
+    
+    .page-main .bg-delivery > div > button {
+        font-size: 1.4em;
+    }
+
+
+    /* sec most req */
+    .sec-mostrequested {
+        max-width: 80%;
+    }
+    
+    
+
 }

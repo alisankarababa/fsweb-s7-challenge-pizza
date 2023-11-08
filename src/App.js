@@ -1,7 +1,6 @@
 import "./App.css"
 
 import React from "react";
-import { useState} from "react";
 import axios from "axios";
 import { Switch, Route, useHistory} from "react-router-dom";
 
@@ -30,22 +29,26 @@ const pizzas = [
 ]
 
 const App = () => {
-    const [order, setOrder] = useState([]);
     const history = useHistory();
     
     function hSubmit(formEntries) {
         console.log(formEntries);
-        axios.post("https://reqres.in/api/users", formEntries)
+        axios.post("https://reqres.in/api/user", formEntries)
         .then(function (response) {
             
-            setOrder([...order, response.data]);
-            history.push(urlPageSuccess);
+            const order = response.data;
+            console.log(order);
+
+            const orderJSON = JSON.stringify(order);
+            const encodedOrder = encodeURIComponent(orderJSON);
+
+            history.push(`${urlPageSuccess}/${encodedOrder}`)
         })
         .catch(function (error) {
-            console.log(error);
+            console.error(error);
         });
     }
-
+    
     return (
         <Switch>
             <Route exact path={urlPageMain}>
@@ -57,7 +60,7 @@ const App = () => {
                     hSubmit={hSubmit}
                 />
             </Route>
-            <Route exact path={urlPageSuccess}>
+            <Route path={`${urlPageSuccess}/:order`}>
                 <PageSuccess/>
             </Route>
         </Switch>

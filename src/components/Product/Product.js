@@ -8,7 +8,7 @@ function Product(props) {
     return (
         <div className="product text-darkgray">
             <h1>{name}</h1>
-            <div className="">
+            <div className="product-details flex align-items-center">
                 <p className="product-price grow-3"><span className="bold">{price}₺</span></p>
                 <div className="flex justify-content-between text-gray grow-1">
                     <p className="product-points">{points}</p>
